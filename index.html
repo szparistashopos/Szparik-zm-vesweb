@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hajrá Szpari! - Kézműves Webshop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #002f6c, #d6001c);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #d6001c;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .container {
+            margin: 20px;
+        }
+        .product {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #d6001c;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #a50014;
+        }
+        footer {
+            background-color: #d6001c;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .order-form {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        .order-form input, .order-form select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>Hajrá Szpari! - Kézműves Nyíregyháza Spartacus Webshop</header>
+    <div class="container">
+        <h2>Termékeink</h2>
+        <div class="product">
+            <img src="scarf.jpg" alt="Sál">
+            <p>Sál - 5000 Ft</p>
+            <button onclick="addToCart('Sál', 5000)">Kosárba</button>
+        </div>
+        <div class="product">
+            <img src="mug.jpg" alt="Bögre">
+            <p>Bögre - 2500 Ft</p>
+            <button onclick="addToCart('Bögre', 2500)">Kosárba</button>
+        </div>
+        <div class="product">
+            <img src="tshirt.jpg" alt="Póló">
+            <p>Póló - 7000 Ft</p>
+            <button onclick="addToCart('Póló', 7000)">Kosárba</button>
+        </div>
+        <div class="product">
+            <img src="hoodie.jpg" alt="Pulcsi">
+            <p>Pulcsi - 12000 Ft</p>
+            <button onclick="addToCart('Pulcsi', 12000)">Kosárba</button>
+        </div>
+        <div class="product">
+            <img src="bracelet.jpg" alt="Karkötő">
+            <p>Karkötő - 1500 Ft</p>
+            <button onclick="addToCart('Karkötő', 1500)">Kosárba</button>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Kosár</h2>
+        <ul id="cart"></ul>
+    </div>
+    <div class="order-form">
+        <h3>Rendelési adatok</h3>
+        <input type="text" id="name" placeholder="Név" required>
+        <input type="text" id="address" placeholder="Lakcím" required>
+        <input type="text" id="phone" placeholder="Telefonszám" required>
+        <input type="email" id="email" placeholder="Email cím" required>
+        <label for="shipping">Szállítási mód:</label>
+        <select id="shipping">
+            <option value="Házhozszállítás">Házhozszállítás</option>
+            <option value="Személyes átvétel">Személyes átvétel</option>
+        </select>
+        <label for="carrier">Szállító cég (díjak):</label>
+        <select id="carrier">
+            <option value="Paketa">Paketa - 3000 Ft</option>
+            <option value="Foxpost">Foxpost - 2900 Ft</option>
+            <option value="GLS">GLS - 3000 Ft</option>
+            <option value="Posta">Posta - 1000 Ft</option>
+        </select>
+        <label for="payment">Fizetési mód:</label>
+        <select id="payment">
+            <option value="Utánvét">Utánvét</option>
+            <option value="Előre utalás">Előre utalás</option>
+        </select>
+        <button onclick="sendOrder()">Rendelés elküldése</button>
+    </div>
+    <footer>Kapcsolat: info@szpariwebshop.hu</footer>
+</body>
+</html>
